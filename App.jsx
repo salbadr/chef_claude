@@ -11,7 +11,7 @@ export default function App() {
     const recipeRef = useRef(null);
 
     async function getRecipe() {
-        const result = await axios.post('http://localhost:3000/api/recipe', { ingredients }, { timeout: 60000 })
+        const result = await axios.post('/api/recipe', { ingredients }, { timeout: 60000 })
 
         return result.data.recipe
 
