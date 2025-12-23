@@ -1,7 +1,7 @@
 
-const OpenAI = require("openai");
+import OpenAI from "openai";
 
-class RecipeAPI {
+export default class RecipeAPI {
 
     static #apiKey = process.env.OPENAI_API_KEY;
 
@@ -26,6 +26,3 @@ easier to render to a web page`
         return response.output_text
     }
 }
-
-
-module.exports = RecipeAPI

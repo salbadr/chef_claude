@@ -1,16 +1,9 @@
-import 'dotenv/config'
-import cors from 'cors';
-
+import serverless from 'serverless-http';
 import express from 'express';
-import RecipeAPI from './recipe-api.js';
+import RecipeAPI from '../../recipe-api';
 
-const PORT = process.env.PORT;
 const app = express()
-app.use(cors(
-    {
-        origin: ['http://localhost:5173', 'http://127.0.0.1:5173'] // Allow requests from this origin only
-    }
-))
+
 
 app.use(express.json())
 app.post('/api/recipe', async (req, res) => {
@@ -31,6 +24,4 @@ app.post('/api/recipe', async (req, res) => {
 
 })
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log('AI Recipe Server listening at port', PORT)
-})
+export const handler = serverless(app);
